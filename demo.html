@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>This is the title</title>
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <body>
+        <h2>Please enter 3 numbers (1-10):</h2>
+        <p>the <b>first</b> number:</p>
+        <input id="input1" type="text">
+        <p>the <b>second</b> number:</p>
+        <input id="input2" type="text">
+        <p>the <b>third</b> number:</p>
+        <input id="input3" type="text">
+        <br>
+        <br>
+        <button onclick="myFunction()">開獎</button>
+        <!--(4) -->
+        <button onclick="resetGame()">Reset</button>
+
+        <!--(1) -->
+        <script>
+            let success = false;
+            const luckyNum1 = Math.floor(Math.random() * 10) + 1;
+            const luckyNum2 = Math.floor(Math.random() * 10) + 1;
+            const luckyNum3 = Math.floor(Math.random() * 10) + 1;
+            const luckyNum = [luckyNum1, luckyNum2, luckyNum3];
+            let correct = 0;
+
+            function myFunction() {
+                let num1 = parseInt(document.getElementById("input1").value);
+                let num2 = parseInt(document.getElementById("input2").value);
+                let num3 = parseInt(document.getElementById("input3").value);
+                const userGuess = [num1, num2, num3];
+                let text;
+                let price = 0;
+            
+                // (5)-Check if input is a valid number
+                if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                    alert("Please enter valid numbers!");
+                    return;
+                }
+                // (5)-Check if any numbers are repeated
+                if (num1 === num2 || num1 === num3 || num2 === num3) {
+                    alert("Please enter three distinct numbers!");
+                    return;
+                }
+
+                //Check the prize
+                for (let i = 0; i < userGuess.length; i++) {
+                        for (let j = 0; j < luckyNum.length; j++) {
+                            if (userGuess[i] === luckyNum[j]) {
+                                correct++;
+                                break;
+                            }
+                        }
+                    }
+                //(2)
+                if (correct === 1) {
+                    win = 100;
+                    prize = "third prize";
+                    text = 'You won ' + prize + ' and got '+win+'!';
+                } else if (correct === 2) {
+                    win = 300;
+                    text = 'You won ' + prize + ' and got '+win+'!';
+                } else if (correct === 3) {
+                    win = 1000;
+                    prize = "first prize";
+                    text = 'You won ' + prize + ' and got $'+win+'!';
+                }
+                else{
+                    text = 'Sorry, no luck this time. Please try again!';
+                }
+
+                // Display the result
+                alert(text);
+
+                // Reset the game
+                resetGame();
+            }
+            //(4)
+            function resetGame() {
+                location.reload();
+            }
+        </script>
+    </body>
+</html>
+
+</html>
