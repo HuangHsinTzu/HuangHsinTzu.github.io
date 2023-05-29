@@ -1,0 +1,19 @@
+body{
+    background-color: #FFFFB9;
+    background-image: url(happy_child.png);
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+h2{
+    color:rgb(255, 0, 85);
+    font-size: 200%;
+}
+p{
+    color: #5e2d16;
+    font-size: 100%;
+
+}
+p:first-child b{
+    color: #F75000;
+    font-size: 300%;
+}
