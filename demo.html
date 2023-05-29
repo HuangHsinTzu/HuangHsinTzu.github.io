@@ -15,8 +15,9 @@
         <br>
         <br>
         <button onclick="myFunction()">開獎</button>
+        //(4)
         <button onclick="resetGame()">Reset</button>
-
+        //(1)
         <script>
             let success = false;
             const luckyNum1 = Math.floor(Math.random() * 10) + 1;
@@ -33,12 +34,12 @@
                 let text;
                 let price = 0;
             
-                // Check if input is a valid number
+                // (5)-Check if input is invalid
                 if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
                     alert("Please enter valid numbers!");
                     return;
                 }
-                // Check if any numbers are repeated
+                // (5)-Check if any numbers are repeated
                 if (num1 === num2 || num1 === num3 || num2 === num3) {
                     alert("Please enter three distinct numbers!");
                     return;
@@ -53,7 +54,7 @@
                             }
                         }
                     }
-
+                //(2)
                 if (correct === 1) {
                     win = 100;
                     prize = "third prize";
@@ -76,7 +77,8 @@
                 // Reset the game
                 resetGame();
             }
-
+    
+            //(4)
             function resetGame() {
                 location.reload();
             }
